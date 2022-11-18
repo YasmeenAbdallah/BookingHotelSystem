@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Booking.BL.Repository.ClientRep
 {
-    class ClientRep : IClientRep
+   public class ClientRep : IClientRep
     {
         private readonly BookingDbContext db;
 

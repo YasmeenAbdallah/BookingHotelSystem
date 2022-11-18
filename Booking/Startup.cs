@@ -1,4 +1,5 @@
-﻿using Booking.DAL.Database;
+﻿using Booking.BL.Repository.ClientRep;
+using Booking.DAL.Database;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -11,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Booking.BL.Mapper;
 
 namespace Booking
 {
@@ -28,6 +30,8 @@ namespace Booking
         {
             services.AddDbContextPool<BookingDbContext>(opt =>
             opt.UseSqlServer(Configuration.GetConnectionString("BookingConnection")));
+            services.AddScoped<IClientRep, ClientRep>();
+            services.AddAutoMapper(x => x.AddProfile(new DomainProfile()));
             services.AddControllers();
         }
 

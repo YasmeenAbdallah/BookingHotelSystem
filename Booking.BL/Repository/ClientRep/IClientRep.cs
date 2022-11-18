@@ -5,7 +5,7 @@ using Booking.DAL.Entities;
 
 namespace Booking.BL.Repository.ClientRep
 {
-    interface IClientRep
+    public interface IClientRep
     {
         /// <summary>
         /// get lis of Clients

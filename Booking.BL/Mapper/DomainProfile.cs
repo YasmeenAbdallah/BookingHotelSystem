@@ -7,7 +7,7 @@ using Booking.DAL.Entities;
 
 namespace Booking.BL.Mapper
 {
-    class DomainProfile: Profile
+    public class DomainProfile: Profile
     {
         public DomainProfile()
         {
