@@ -1,0 +1,13 @@
+E:\.net\BookingHotelSystem\Booking.BL\bin\Debug\netcoreapp3.1\Booking.BL.deps.json
+E:\.net\BookingHotelSystem\Booking.BL\bin\Debug\netcoreapp3.1\Booking.BL.dll
+E:\.net\BookingHotelSystem\Booking.BL\bin\Debug\netcoreapp3.1\Booking.BL.pdb
+E:\.net\BookingHotelSystem\Booking.BL\bin\Debug\netcoreapp3.1\Booking.DAL.dll
+E:\.net\BookingHotelSystem\Booking.BL\bin\Debug\netcoreapp3.1\Booking.DAL.pdb
+E:\.net\BookingHotelSystem\Booking.BL\obj\Debug\netcoreapp3.1\Booking.BL.csproj.AssemblyReference.cache
+E:\.net\BookingHotelSystem\Booking.BL\obj\Debug\netcoreapp3.1\Booking.BL.GeneratedMSBuildEditorConfig.editorconfig
+E:\.net\BookingHotelSystem\Booking.BL\obj\Debug\netcoreapp3.1\Booking.BL.AssemblyInfoInputs.cache
+E:\.net\BookingHotelSystem\Booking.BL\obj\Debug\netcoreapp3.1\Booking.BL.AssemblyInfo.cs
+E:\.net\BookingHotelSystem\Booking.BL\obj\Debug\netcoreapp3.1\Booking.BL.csproj.CoreCompileInputs.cache
+E:\.net\BookingHotelSystem\Booking.BL\obj\Debug\netcoreapp3.1\Booking.BL.csproj.CopyComplete
+E:\.net\BookingHotelSystem\Booking.BL\obj\Debug\netcoreapp3.1\Booking.BL.dll
+E:\.net\BookingHotelSystem\Booking.BL\obj\Debug\netcoreapp3.1\Booking.BL.pdb

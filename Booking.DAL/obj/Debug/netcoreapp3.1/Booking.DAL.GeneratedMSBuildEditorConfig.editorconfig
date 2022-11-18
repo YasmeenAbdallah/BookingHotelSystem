@@ -1,0 +1,3 @@
+is_global = true
+build_property.RootNamespace = Booking.DAL
+build_property.ProjectDir = E:\.net\BookingHotelSystem\Booking.DAL\
