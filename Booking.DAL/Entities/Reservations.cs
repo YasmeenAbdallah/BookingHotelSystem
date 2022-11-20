@@ -45,8 +45,8 @@ namespace Booking.DAL.Entities
         /// <summary>
         /// the created  User id 
         /// </summary>
-        public int UserId { get; set; }
-        public User User { get; set; }
+        public int AppUserId { get; set; }
+        public User AppUser { get; set; }
         /// <summary>
         /// the Hotel Id
         /// </summary>

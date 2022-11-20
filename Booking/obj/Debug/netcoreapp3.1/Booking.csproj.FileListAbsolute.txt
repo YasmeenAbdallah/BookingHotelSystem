@@ -66,3 +66,11 @@ E:\.net\BookingHotelSystem\Booking\obj\Debug\netcoreapp3.1\Booking.pdb
 E:\.net\BookingHotelSystem\Booking\obj\Debug\netcoreapp3.1\Booking.genruntimeconfig.cache
 E:\.net\BookingHotelSystem\Booking\bin\Debug\netcoreapp3.1\Humanizer.dll
 E:\.net\BookingHotelSystem\Booking\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
+E:\.net\BookingHotelSystem\Booking\bin\Debug\netcoreapp3.1\AutoMapper.dll
+E:\.net\BookingHotelSystem\Booking\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+E:\.net\BookingHotelSystem\Booking\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
+E:\.net\BookingHotelSystem\Booking\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+E:\.net\BookingHotelSystem\Booking\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+E:\.net\BookingHotelSystem\Booking\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
+E:\.net\BookingHotelSystem\Booking\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll
+E:\.net\BookingHotelSystem\Booking\bin\Debug\netcoreapp3.1\System.Runtime.CompilerServices.Unsafe.dll

@@ -13,6 +13,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Booking.BL.Mapper;
+using Microsoft.AspNetCore.Identity;
+using Booking.DAL.Entities;
 
 namespace Booking
 {
@@ -30,6 +32,18 @@ namespace Booking
         {
             services.AddDbContextPool<BookingDbContext>(opt =>
             opt.UseSqlServer(Configuration.GetConnectionString("BookingConnection")));
+            services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<BookingDbContext>().AddDefaultTokenProviders();
+            services.Configure<IdentityOptions>(opt => {
+                opt.Password.RequiredLength = 6;
+                opt.Password.RequireNonAlphanumeric = false;
+                opt.Password.RequireDigit = true;
+                opt.Password.RequireLowercase = true;
+                opt.Password.RequireUppercase = false;
+                opt.User.RequireUniqueEmail = true;
+                opt.Lockout.MaxFailedAccessAttempts = 3;
+                opt.Lockout.DefaultLockoutTimeSpan = System.TimeSpan.FromMinutes(10);
+            });
+
             services.AddScoped<IClientRep, ClientRep>();
             services.AddAutoMapper(x => x.AddProfile(new DomainProfile()));
             services.AddControllers();
@@ -44,6 +58,7 @@ namespace Booking
             }
 
             app.UseRouting();
+            app.UseAuthentication();
 
             app.UseAuthorization();
 
