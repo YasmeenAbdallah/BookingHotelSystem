@@ -31,6 +31,9 @@ namespace Booking.DAL.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("CreationDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Email")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
@@ -38,14 +41,14 @@ namespace Booking.DAL.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
@@ -179,8 +182,11 @@ namespace Booking.DAL.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AppUserId")
+                    b.Property<int>("ApplicationUserId")
                         .HasColumnType("int");
+
+                    b.Property<string>("ApplicationUserId1")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("ArrivalDate")
                         .HasColumnType("datetime2");
@@ -208,7 +214,7 @@ namespace Booking.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AppUserId");
+                    b.HasIndex("ApplicationUserId1");
 
                     b.HasIndex("BranchId");
 
@@ -247,21 +253,6 @@ namespace Booking.DAL.Migrations
                     b.ToTable("ReseverationDetails");
                 });
 
-            modelBuilder.Entity("Booking.DAL.Entities.Roles", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Roles");
-                });
-
             modelBuilder.Entity("Booking.DAL.Entities.RoomType", b =>
                 {
                     b.Property<int>("Id")
@@ -281,38 +272,6 @@ namespace Booking.DAL.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("RoomType");
-                });
-
-            modelBuilder.Entity("Booking.DAL.Entities.User", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreationDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Password")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("RolesId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RolesId");
-
-                    b.ToTable("User");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -467,11 +426,9 @@ namespace Booking.DAL.Migrations
 
             modelBuilder.Entity("Booking.DAL.Entities.Reservations", b =>
                 {
-                    b.HasOne("Booking.DAL.Entities.User", "AppUser")
+                    b.HasOne("Booking.DAL.Entities.ApplicationUser", "ApplicationUser")
                         .WithMany("Reservations")
-                        .HasForeignKey("AppUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ApplicationUserId1");
 
                     b.HasOne("Booking.DAL.Entities.Branch", "Branch")
                         .WithMany("Reservations")
@@ -491,7 +448,7 @@ namespace Booking.DAL.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("AppUser");
+                    b.Navigation("ApplicationUser");
 
                     b.Navigation("Branch");
 
@@ -517,17 +474,6 @@ namespace Booking.DAL.Migrations
                     b.Navigation("Reservations");
 
                     b.Navigation("RoomType");
-                });
-
-            modelBuilder.Entity("Booking.DAL.Entities.User", b =>
-                {
-                    b.HasOne("Booking.DAL.Entities.Roles", "Roles")
-                        .WithMany("User")
-                        .HasForeignKey("RolesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Roles");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -581,6 +527,11 @@ namespace Booking.DAL.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Booking.DAL.Entities.ApplicationUser", b =>
+                {
+                    b.Navigation("Reservations");
+                });
+
             modelBuilder.Entity("Booking.DAL.Entities.Branch", b =>
                 {
                     b.Navigation("BranchRooms");
@@ -603,21 +554,11 @@ namespace Booking.DAL.Migrations
                     b.Navigation("ResverationDetails");
                 });
 
-            modelBuilder.Entity("Booking.DAL.Entities.Roles", b =>
-                {
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("Booking.DAL.Entities.RoomType", b =>
                 {
                     b.Navigation("BranchRooms");
 
                     b.Navigation("ReseverationDetails");
-                });
-
-            modelBuilder.Entity("Booking.DAL.Entities.User", b =>
-                {
-                    b.Navigation("Reservations");
                 });
 #pragma warning restore 612, 618
         }

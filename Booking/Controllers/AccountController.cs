@@ -70,7 +70,9 @@ namespace Booking.Controllers
             ApplicationUser newUser = new ApplicationUser
             {
                 Email = register.Email,
-                UserName = register.Username
+                UserName = register.Username,
+                CreationDate = DateTime.Now,
+                IsActive = true
             };
             IdentityResult result = await _userManager.CreateAsync(newUser, register.Password);
             if (!result.Succeeded)

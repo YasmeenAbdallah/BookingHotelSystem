@@ -24,7 +24,7 @@ namespace Booking.DAL.Database
         public DbSet<Reservations> Reservations { get; set; }
         public DbSet<ReservationStatus> ReservationStatus { get; set; }
         public DbSet<ReseverationDetails> ReseverationDetails { get; set; }
-        public DbSet<Roles> Roles { get; set; }
-        public DbSet<User> User { get; set; }
+      
+       
     }
 }
