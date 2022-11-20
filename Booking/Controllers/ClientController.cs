@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using Booking.BL.Repository.ClientRep;
+using Booking.BL.ViewModels;
+using Booking.DAL.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -12,36 +16,68 @@ namespace Booking.Controllers
     [ApiController]
     public class ClientController : ControllerBase
     {
+        private readonly IClientRep clientRep;
+        private readonly IMapper mapper;
+
+        public ClientController(IMapper mapper, IClientRep clientRep)
+        {
+            this.clientRep = clientRep;
+            this.mapper = mapper;
+
+        }
         // GET: api/<ClientsController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IActionResult Get()
         {
-            return new string[] { "value1", "value2" };
+            var data =  clientRep.Get();
+            var model = mapper.Map<IEnumerable<ClientVM>>(data);
+            return Ok(model);
         }
 
         // GET api/<ClientsController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public IActionResult Get(int id)
         {
-            return "value";
+            var data = clientRep.GetById(id);
+            var model = mapper.Map<IEnumerable<ClientVM>>(data);
+            return Ok(model);
         }
 
         // POST api/<ClientsController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Post([FromBody] ClientVM client)
         {
+            if (ModelState.IsValid)
+            {
+
+                var data = mapper.Map<Client>(client);
+                clientRep.Create(data);
+                return NoContent();
+            }
+            return NotFound();
         }
 
         // PUT api/<ClientsController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public IActionResult Put([FromBody] ClientVM client)
         {
+            if (ModelState.IsValid)
+            {
+                var data = mapper.Map<Client>(client);
+                clientRep.Edit(data);
+                return Ok();
+            }
+            return NotFound();
         }
 
         // DELETE api/<ClientsController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete([FromBody] ClientVM client)
         {
+            var data = mapper.Map<Client>(client);
+            clientRep.Delete(data);
+            return Ok();
+
         }
     }
 }
